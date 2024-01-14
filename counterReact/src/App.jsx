@@ -7,6 +7,11 @@ function App() {
 
   let counter = 15;
 
+  function addValue()
+  {
+    console.log("Value added",Math.random())
+  }
+
   return (
     <>
       <h1>Counter React Project</h1>
