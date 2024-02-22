@@ -42,7 +42,7 @@ function App() {
       <h2 id="addingcounter"></h2>
       <button onClick={removeValue}>remove value</button>
       <h2 id="removecounter"></h2>
-    </>
+     </>
   )
 }
 
