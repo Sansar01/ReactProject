@@ -13,7 +13,11 @@ function App() {
     //counter = counter + 1
     if(counter<20)
     {
-    setcounter(counter + 1);
+    //setcounter(counter + 1);
+    setcounter(prevcounter=> prevcounter+1);
+    setcounter(prevcounter=> prevcounter+1);
+    setcounter(prevcounter=> prevcounter+1);
+    setcounter(prevcounter=> prevcounter+1);
     document.getElementById("removecounter").innerHTML = "";
     }
     else
