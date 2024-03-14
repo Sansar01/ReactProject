@@ -1,4 +1,6 @@
-import React from 'react'
+/* eslint-disable react/prop-types */
+// eslint-disable-next-line no-unused-vars
+import React, {useId} from 'react'
 
 function InputBox({
     label,
@@ -35,7 +37,8 @@ function InputBox({
                     className="rounded-lg px-1 py-1 bg-gray-100 cursor-pointer outline-none"
                     value={selectCurrency}
                     onChange={(e) => onCurrencyChange && onCurrencyChange(e.target.value)}
-                    disabled={currencyDisable}>
+                    disabled={currencyDisable}
+                >
                     
                         {currencyOptions.map((currency) => (
                             <option key={currency} value={currency}>
