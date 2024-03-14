@@ -6,6 +6,7 @@ function App() {
   const[numberAllowed,setnumberAllowed] = useState(false) //intially checkbox is unchecked
   const[charAllowed,setcharAllowed] = useState(false) // intially checkbox is unchecked
   const[password,setPassword] = useState("")
+  const[copy,setCopy] = useState("copy");
 
   const passwordRef = useRef(null)
       const passwordGenerator = useCallback(()=>{ 
@@ -28,7 +29,9 @@ function App() {
     
       passwordRef.current?.select();
       passwordRef.current?.setSelectionRange(0,3);
-      window.navigator.clipboard.writeText(password)
+      window.navigator.clipboard.writeText(password.substring(0,3))
+       
+      setCopy("copied");
 
     },[password])
 
@@ -42,7 +45,7 @@ function App() {
        <div className="flex shadow rounded-lg overflow-hidden mb-4">
         <input type="text" value={password} className="outline-none w-full py-1 px-3" placeholder='Password' readOnly ref={passwordRef}>
         </input>
-       <button className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0' onClick={copytoClipboard}>copy</button>
+       <button className='outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0' onClick={copytoClipboard}>{copy}</button>
        </div>
        <div className='flex text-sm gap-x-2'>
         <div className='flex items-center gap-x-1'>
