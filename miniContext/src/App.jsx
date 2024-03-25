@@ -1,13 +1,18 @@
 
 import './App.css'
-import UserContext from './context/Usercontext'
+import Login from './components/Login'
+import Profile from './components/Profile'
+import UserContextProvider from './context/UserContextProvider'
+
 
 function App() {
 
   return (
-    <UserContext>
+    <UserContextProvider>
       Hello, we are making Context Api
-    </UserContext>
+      <Login/>
+      <Profile/>
+    </UserContextProvider>
   )
 }
 
