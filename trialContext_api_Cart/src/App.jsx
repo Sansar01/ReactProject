@@ -10,9 +10,9 @@ function App() {
 
   return (
     <>
-      <Item name="Iqoo" price = "100"/>
-      <Item name="Redmi" price = "500"/>
-      <Item name="Realme" price = "50"/>
+    <Item name="Iqoo" price = {100}/>
+      <Item name="Redmi" price = {500}/>
+      <Item name="Realme" price = {50}/>
       <Cart/>
     </>
   )
