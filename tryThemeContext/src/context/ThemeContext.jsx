@@ -1,4 +1,4 @@
-import { createContext } from "react";
+import { createContext, useState,useEffect } from "react";
 
 export const ThemeContext = createContext({
     themeMode:"light",
@@ -6,9 +6,24 @@ export const ThemeContext = createContext({
     lightTheme:()=>{}
 });
 
-export const ThemeProvider = (props)=>{
+export const ThemeProvider = ()=>{
     
-    <ThemeContext.Provider>
-     {props.children}
+    const[themeMode,setThemeMode] = useState("light");
+    
+    const darkTheme = ()=>{
+        setThemeMode("dark")
+    }
+
+    const lightTheme = ()=>{
+        setThemeMode("light")
+     }
+
+     useEffect(() => {
+        document.querySelector('html').classList.remove("light", "dark")
+        document.querySelector('html').classList.add(themeMode)
+      }, [themeMode]);
+
+    <ThemeContext.Provider value={{themeMode,lightTheme,darkTheme}}>
+
     </ThemeContext.Provider>
 }
