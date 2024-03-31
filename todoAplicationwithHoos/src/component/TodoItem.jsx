@@ -2,7 +2,7 @@ import React from 'react'
 
 function TodoItem(props) {
 
-  const value =  props.value;
+  
 
     return (
         <>
