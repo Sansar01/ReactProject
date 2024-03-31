@@ -6,24 +6,11 @@ export const ThemeContext = createContext({
     lightTheme:()=>{}
 });
 
-export const ThemeProvider = ()=>{
+export const ThemeProvider = (props)=>{
     
     const[themeMode,setThemeMode] = useState("light");
     
-    const darkTheme = ()=>{
-        setThemeMode("dark")
-    }
-
-    const lightTheme = ()=>{
-        setThemeMode("light")
-     }
-
-     useEffect(() => {
-        document.querySelector('html').classList.remove("light", "dark")
-        document.querySelector('html').classList.add(themeMode)
-      }, [themeMode]);
-
-    <ThemeContext.Provider value={{themeMode,lightTheme,darkTheme}}>
-
+    <ThemeContext.Provider value={{themeMode,setThemeMode}}>
+        {props.children}
     </ThemeContext.Provider>
 }
