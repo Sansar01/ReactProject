@@ -1,14 +1,18 @@
 import React from 'react'
 
-function TodoItem() {
+function TodoItem(props) {
     return (
-        <li className='todo-item'>
-            <span className='todo-item-text'>
-                <input type='checkbox' />
-                <span>Eat</span>
-            </span>
-            <p>...</p>
-        </li>
+        <>
+        {props&& props.map((item)=>(
+            <li className='todo-item'>
+                <span className='todo-item-text'>
+                    <input type='checkbox' />
+                    <span>{item}</span>
+                </span>
+                <p>...</p>
+            </li>
+            ))}
+        </>
     )
 }
 

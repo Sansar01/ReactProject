@@ -5,17 +5,18 @@ import TodoItem from './component/TodoItem'
 import Button from './component/Button'
 
 function App() {
-  const [count, setCount] = useState({
-    item:"Eat,Food,French,Dogal"
-  })
+ 
+  const item = ["Eat, sleep and code,Food,Dogal"]
+
+  item.map((item)=>console.log(item))
 
   return (
     <div className='todo-container'>
       <Header/>
-      <TodoItem />
+      <TodoItem item/>
+      {/* <TodoItem/>
       <TodoItem/>
-      <TodoItem/>
-      <TodoItem/>
+      <TodoItem/> */}
       <Button/>
     </div>
   )
