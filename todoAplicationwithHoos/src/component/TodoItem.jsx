@@ -1,17 +1,19 @@
 import React from 'react'
 
 function TodoItem(props) {
+
+  const value =  props.value;
+
     return (
         <>
-        {props&& props.map((item)=>(
             <li className='todo-item'>
                 <span className='todo-item-text'>
                     <input type='checkbox' />
-                    <span>{item}</span>
+                    <span>{value.map((value) => (value))}</span>
                 </span>
                 <p>...</p>
             </li>
-            ))}
+        
         </>
     )
 }
