@@ -13,10 +13,10 @@ function App() {
   return (
     <div className='todo-container'>
       <Header/>
-      <TodoItem item/>
-      {/* <TodoItem/>
-      <TodoItem/>
-      <TodoItem/> */}
+      <TodoItem item="Eat" />
+      <TodoItem item="Food" completed="true"/>
+      <TodoItem item="FrenchFries"/>
+      <TodoItem item="Dogal"/>
       <Button/>
     </div>
   )
