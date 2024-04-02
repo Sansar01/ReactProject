@@ -17,4 +17,9 @@ export const useTodo = () => {
 }
 
 
-export const Todoprovider = TodoContext.Provider
+export const TodoProvider = TodoContext.Provider;
+
+
+// export const TryProvider = ()=>{
+//     <TodoContext.Provider value={{addTodo}}></TodoContext.Provider>
+// }
