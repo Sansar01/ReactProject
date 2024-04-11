@@ -2,18 +2,24 @@
 import React from 'react'
 
 function TodoItem(props) {
-    return (
-        <>
-            <li className='todo-item'>
-                <span className='todo-item-text'>
-                    {props.completed?<></>:<input type='checkbox' />}
-                    <span>{props.item}</span>
-                </span>
-                <p>...</p>
-            </li>
-        
-        </>
-    )
+  return (
+    <>
+      
+      {props.item.map((item, index) => (
+        <li className="todo-item" key={index}>
+          <span className="todo-item-text">
+            {item.completed?<></>:<input type="checkbox" />}
+            <span>{item.name}</span>
+          </span>
+          <p>...</p>
+        </li>
+      ))}
+
+      {/* {props.item.map((item, index) =>
+        console.log('component render  ' + item.name + ' **** ' + index),
+      )} */}
+    </>
+  )
 }
 
 export default TodoItem

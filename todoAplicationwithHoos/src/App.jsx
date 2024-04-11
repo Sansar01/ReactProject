@@ -5,19 +5,26 @@ import TodoItem from './component/TodoItem'
 import Button from './component/Button'
 
 function App() {
- 
-  const item = ["Eat, sleep and code,Food,Dogal"]
+  //const item = ["Eat, sleep and code,Food,Dogal"]
 
-  item.map((item)=>console.log(item))
+  const item = [
+    { name: 'Eat',completed:true },
+    { name: 'sleepandcode' },
+    { name: 'Food',completed:true },
+    { name: 'Dogal' },
+  ]
+
+  item.map((item, index) => console.log(item.name + ' **** ' + index))
 
   return (
-    <div className='todo-container'>
-      <Header/>
-      <TodoItem item="Eat" />
+    <div className="todo-container">
+      <Header />
+      <TodoItem item={item} />
+      {/* <TodoItem item="Eat" />
       <TodoItem item="Food" completed="true"/>
       <TodoItem item="FrenchFries"/>
-      <TodoItem item="Dogal"/>
-      <Button/>
+      <TodoItem item="Dogal"/> */}
+      <Button />
     </div>
   )
 }
