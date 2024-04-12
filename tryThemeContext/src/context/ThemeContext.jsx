@@ -9,8 +9,23 @@ export const ThemeContext = createContext({
 export const ThemeProvider = (props)=>{
     
     const[themeMode,setThemeMode] = useState("light");
+
+    useEffect(() => {
+      document.querySelector('html').classList.remove("light", "dark")
+      document.querySelector('html').classList.add(themeMode)
+    }, [themeMode]);
+
+
+    const darkTheme = ()=>{
+      setThemeMode(themeMode=="dark")
+  }
+
+  const lightTheme = ()=>{
+    setThemeMode(themeMode=="light")
+   }
+
     
-    <ThemeContext.Provider value={{themeMode,setThemeMode}}>
+    <ThemeContext.Provider value={{themeMode,setThemeMode,darkTheme,lightTheme}}>
         {props.children}
     </ThemeContext.Provider>
 }
