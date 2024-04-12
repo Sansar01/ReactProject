@@ -13,6 +13,10 @@ export const ThemeProvider = (props)=>{
     useEffect(() => {
       document.querySelector('html').classList.remove("light", "dark")
       document.querySelector('html').classList.add(themeMode)
+      // document.getElementById("card").classList.remove("light","dark")
+      // document.getElementById("card").classList.add(themeMode); 
+      
+      /**may be implemented later on */
     }, [themeMode]);
 
 
