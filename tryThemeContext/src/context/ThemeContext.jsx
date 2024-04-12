@@ -17,15 +17,18 @@ export const ThemeProvider = (props)=>{
 
 
     const darkTheme = ()=>{
-      setThemeMode(themeMode=="dark")
+      setThemeMode((themeMode)=>themeMode="dark")
+      //setThemeMode("dark")
   }
 
   const lightTheme = ()=>{
-    setThemeMode(themeMode=="light")
+    setThemeMode((themeMode)=>themeMode="light")
+    //setThemeMode("light");
    }
 
-    
-    <ThemeContext.Provider value={{themeMode,setThemeMode,darkTheme,lightTheme}}>
-        {props.children}
-    </ThemeContext.Provider>
+    return(
+      <ThemeContext.Provider value={{themeMode,setThemeMode,darkTheme,lightTheme}}>
+      {props.children}
+  </ThemeContext.Provider>
+    )
 }

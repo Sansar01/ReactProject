@@ -7,8 +7,6 @@ import { ThemeProvider } from "./context/ThemeContext.jsx";
 function App() {
   
   return (
-
-
 /*there are two ways to implement 
 
 First ways - you can write Themeprovider in app.jsx
