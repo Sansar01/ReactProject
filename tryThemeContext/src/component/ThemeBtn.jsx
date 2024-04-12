@@ -3,7 +3,7 @@ import { ThemeContext } from '../context/ThemeContext'
 
 function ThemeBtn() {
 
-    const {darkTheme,lightTheme,themeMode,setThemeMode} = useContext(ThemeContext);
+     const {darkTheme,lightTheme,themeMode} = useContext(ThemeContext);
 
   const  onChangeBtn = (e)=>
     {
@@ -11,12 +11,12 @@ function ThemeBtn() {
         if(darkModeStatus)
         {
             darkTheme();
-            setThemeMode("light")
+            //setThemeMode("light")
         }
         else
         {
             lightTheme();
-            setThemeMode("dark")
+            //setThemeMode("dark")
         }
     }
 
