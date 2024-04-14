@@ -1,11 +1,19 @@
 import  {useState} from 'react'
-import {useDispatch} from 'react-redux'
-import {addTodo} from '../features/todoSlice' 
+import {useDispatch, useSelector} from 'react-redux'
+import {addTodo,updateTodo} from '../features/todoSlice'
+
 
 function AddTodo() {
 
     const [input, setInput] = useState('')
     const dispatch = useDispatch()
+
+    const todovalue = useSelector((state)=>state.text)
+
+    if(todovalue!=="")
+    {
+      setInput(todovalue)
+    }
 
     const addTodoHandler = (e) => {
         e.preventDefault()

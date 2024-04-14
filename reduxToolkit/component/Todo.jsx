@@ -2,11 +2,11 @@
 
 import { useSelector, useDispatch } from 'react-redux'
 import { removeTodo } from '../features/todoSlice'
+import {updateTodo} from '../features/todoSlice'
 
 function Todos() {
   const todos = useSelector((state) => state.todos)
   const dispatch = useDispatch()
-
   return (
     <>
       <div>Todos</div>
@@ -17,7 +17,8 @@ function Todos() {
             key={todo.id}
           >
             <div className="text-white">{todo.text}</div>
-            <button className='text-white bg-red-500 border-0 py-1 px-4 focus:outline-none hover:bg-red-600 rounded text-md ml-60'>
+            <button onClick={()=>dispatch(updateTodo(todo.id))}
+            className='text-white bg-green-500 border-0 py-1 px-4 focus:outline-none hover:bg-yellow-600 rounded text-md ml-60'>
               <svg
                xmlns="http://www.w3.org/2000/svg"
                 fill="none"
