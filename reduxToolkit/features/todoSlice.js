@@ -1,12 +1,13 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSelector, createSlice, nanoid } from '@reduxjs/toolkit';
 import AddTodo from '../component/AddTodo';
 import { useDispatch } from 'react-redux';
 
 const initialState = {
-    todos: [{ id: 1, text: "Hello world" }]
+    todos: [{ id: 1, text: "Hello world" }],
+    selectedTodo: null,
 }
 
-
+export let selecttodo = "";
 
 export const todoSlice = createSlice({
     name: 'todo',
@@ -23,7 +24,7 @@ export const todoSlice = createSlice({
             state.todos = state.todos.filter((todo) => todo.id !== action.payload)
         },
         updateTodo: (state, action) => {
-           console.log(action.payload.text);
+
 
         }
     }
