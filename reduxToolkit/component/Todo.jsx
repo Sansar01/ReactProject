@@ -8,16 +8,6 @@ function Todos() {
   const todos = useSelector((state) => state.todos);
   const dispatch = useDispatch();
 
-  const handleUpdate = (todo) => {
-
-    const { id, text } = todo
-    const todoIndex = state.todos.findIndex((todo) => todo.id == id);
-
-    if (todoIndex != -1) {
-      state.todos[todoIndex].text = text;
-      state.selectedTodo = state.todos[todoIndex]; // get particular todo and assign to the selectedTodo
-    }
-  };
 
   return (
     <>
@@ -30,7 +20,7 @@ function Todos() {
           >
             <div className="text-white">{todo.text}</div>
             <button
-              onClick={() => handleUpdate(todo)}
+              onClick={() =>dispatch(updateTodo(todo))}
               className="text-white bg-green-500 border-0 py-1 px-4 focus:outline-none hover:bg-yellow-600 rounded text-md ml-60"
             >
               <svg
