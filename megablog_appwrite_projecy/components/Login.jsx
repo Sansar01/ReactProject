@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../store/authSlice";
 import { Button, Logo, Input } from "./Index";
-import { UseDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import authService from "../appwrite/auth";
 import { useForm } from "react-hook-form";
 
 function Login() {
   const navigate = useNavigate();
-  const dispatch = UseDispatch();
+  const dispatch = useDispatch();
   const { register, handleSubmit } = useForm();
 
   const [error, setError] = useState("");
@@ -58,7 +58,8 @@ function Login() {
                 {...register("email",{required:true, validate:{
                   matchPattern:(value)=> /^\w+([.-]?\w+)*@\w+([.-?\w+])*(\.\w{2,3})+$/.test(value) || "Email address must be a valid address",
                 }})}/>
-                   <Input label="password" placeholder="Enter your password" type="password"{...register("password"),{required:true}}
+                   <Input label="password" placeholder="Enter your password" type="password"
+                   {...register("password",{required:true})}
                    />
              <Button type="submit" className="w-full">Sign in</Button>
             </div>

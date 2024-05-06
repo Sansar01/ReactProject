@@ -1,6 +1,7 @@
-import { Client, Account, ID, Databases, Query } from "appwrite";
+import { Client, Storage, ID, Databases, Query } from "appwrite";
+import conf from '../conf/conf'
 
-export class service {
+export class Service {
     client = new Client();
     account;
     databases;
@@ -8,77 +9,89 @@ export class service {
 
     constructor() {
         this.client
-            .setEndpoint(
-                import.meta.env.VITE_APPWRITE_URL)
-            .setProject(
-                import.meta.env.VITE_PROJECT_ID);
-        this.account = new Account(this.client);
+            .setEndpoint(conf.appwriteUrl)
+            .setProject(conf.appwriteProjectId);
         this.databases = new Databases(this.client);
-        this.bucket = new Databases(this.client);
+        this.bucket = new Storage(this.client);
     }
 
-    async createPost({ title, slug, featuredImage, content, status, userId }) {
+    async createPost({ title, slug, content, featuredImage, status, userId }) {
         try {
             return await this.databases.createDocument(
-                import.meta.env.VITE_DATABASE_ID,
-                import.meta.env.VITE_COLLECTION_ID,
-                slug, { title, featuredImage, content, status, userId }
-            );
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug, {
+                    title,
+                    content,
+                    featuredImage,
+                    status,
+                    userId,
+                }
+            )
         } catch (error) {
-            console.log("Appwrite service::createPost::error", error);
+            console.log("Appwrite serive :: createPost :: error", error);
         }
     }
 
-    async updatePost(slug, { title, featuredImage, content, status }) {
+    async updatePost(slug, { title, content, featuredImage, status }) {
         try {
             return await this.databases.updateDocument(
-                import.meta.env.VITE_DATABASE_ID,
-                import.meta.env.VITE_COLLECTION_ID,
-                slug, { title, featuredImage, content, status }
-            );
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                slug, {
+                    title,
+                    content,
+                    featuredImage,
+                    status,
+
+                }
+            )
         } catch (error) {
-            console.log("Appwrite service::updatePost::error", error);
+            console.log("Appwrite serive :: updatePost :: error", error);
         }
     }
 
     async deletePost(slug) {
         try {
             await this.databases.deleteDocument(
-                import.meta.env.VITE_DATABASE_ID,
-                import.meta.env.VITE_COLLECTION_ID,
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
                 slug
-            );
 
-            return true;
+            )
+            return true
         } catch (error) {
-            console.log("Appwrite service::deletePost::error", error);
-            return false;
+            console.log("Appwrite serive :: deletePost :: error", error);
+            return false
         }
     }
 
     async getPost(slug) {
         try {
             return await this.databases.getDocument(
-                import.meta.env.VITE_DATABASE_ID,
-                import.meta.env.VITE_COLLECTION_ID,
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
                 slug
-            );
+
+            )
         } catch (error) {
-            console.log("Appwrite service::getPost::error", error);
-            return false;
+            console.log("Appwrite serive :: getPost :: error", error);
+            return false
         }
     }
 
     async getPosts(queries = [Query.equal("status", "active")]) {
         try {
-            return await this.databases.getDocument(
-                import.meta.env.VITE_DATABASE_ID,
-                import.meta.env.VITE_COLLECTION_ID,
-                queries
-            );
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                queries,
+
+
+            )
         } catch (error) {
-            console.log("Appwrite service::getPosts::error", error);
-            return false;
+            console.log("Appwrite serive :: getPosts :: error", error);
+            return false
         }
     }
 
@@ -87,27 +100,37 @@ export class service {
     async uploadFile(file) {
         try {
             return await this.bucket.createFile(
-                conf.import.meta.env.VITE_BUCKET_ID,
-                ID.unqiue(),
+                conf.appwriteBucketId,
+                ID.unique(),
                 file
-            );
+            )
         } catch (error) {
-            console.log("Appwrite service::uploadFile::error", error);
-            return false;
+            console.log("Appwrite serive :: uploadFile :: error", error);
+            return false
         }
     }
 
     async deleteFile(fileId) {
         try {
-            return await this.bucket.deleteFile(conf.import.meta.env.VITE_BUCKET_ID, fileId)
+            await this.bucket.deleteFile(
+                conf.appwriteBucketId,
+                fileId
+            )
             return true
         } catch (error) {
-            console.log("Appwrite service::deleteFile::error", error);
-            return false;
+            console.log("Appwrite serive :: deleteFile :: error", error);
+            return false
         }
     }
 
     getFilePreview(fileId) {
-        return this.bucket.getFilePreview(conf.import.meta.env.VITE_BUCKET_ID, fileId);
+        return this.bucket.getFilePreview(
+            conf.appwriteBucketId,
+            fileId
+        )
     }
 }
+
+const service = new Service();
+
+export default service;
