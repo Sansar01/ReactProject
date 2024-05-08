@@ -11,6 +11,7 @@ import Login from './Login'
 import PostCard from './PostCard'
 import PostForm from './PostForm/PostForm'
 import AuthLayout from '../components/AuthLayout'
+import RTE from '../components/RTE'
 
 export {
     Header,
@@ -25,5 +26,6 @@ export {
     Login,
     PostCard,
     PostForm,
-    AuthLayout
+    AuthLayout,
+    RTE
 }

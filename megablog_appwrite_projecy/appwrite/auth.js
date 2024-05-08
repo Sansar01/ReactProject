@@ -30,7 +30,7 @@ export class AuthService {
 
     async login({ email, password }) {
         try {
-            const login = await this.account.createEmailSession(email, password);
+            const login = await this.account.createEmailPasswordSession(email, password);
             if (login) {
                 return login;
             }
