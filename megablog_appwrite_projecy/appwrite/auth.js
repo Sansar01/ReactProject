@@ -1,5 +1,5 @@
 import conf from '../conf/conf.js';
-import { Client, Account, ID } from "appwrite";
+import { Client, Account, ID, Role } from "appwrite";
 
 
 export class AuthService {
@@ -32,6 +32,7 @@ export class AuthService {
         try {
             const login = await this.account.createEmailPasswordSession(email, password);
             if (login) {
+
                 return login;
             }
         } catch (error) {
