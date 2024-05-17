@@ -36,7 +36,7 @@ export default function PostForm({ post }) {
                 navigate(`/post/${dbPost.$id}`);
             }
         } else {
-            let id = userData.$id;
+            const id = userData.$id;
             console.log("userdata "+id);
             const file = await appwriteService.uploadFile(data.image[0]);
 
